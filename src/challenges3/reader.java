@@ -2,6 +2,7 @@ package challenges3;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 
@@ -19,12 +20,19 @@ public class reader {
 	static String LocatieDone = folderLocation+"done.txt"; // txt file met de emoji's die geteld moeten worden met hun punten en commando
 	static String LocatieBonus = folderLocation+"bonus.txt"; // txt file met de bonus emoji's die geteld moeten worden met hun punten
 	
+	
+	
+	private static BufferedReader getBufReader(String fileLocation) throws FileNotFoundException {
+		return new BufferedReader(new FileReader(new File(fileLocation)));
+	}
+	
 	public static void main(String[] args) throws Exception {
 		// get file locations, and files
 		int week = 0 ;
 		ArrayList<String> locations = new ArrayList<>();
 		ArrayList<BufferedReader> br_week_list = new ArrayList<>();
 		
+		// Retrieve all data from the chatW<week>.txt's
 		// Start with week 0: here people can input their promises for the first week.
 		while (week <= amount_of_weeks) {
 			String file_name = folderLocation+"chatW"+week+".txt";
@@ -36,16 +44,14 @@ public class reader {
 			week++;
 		}
 		
-		//File bepaling = new File(LocatieBepaling);
-		File emojiPromise = new File(LocatiePromise);
-		File emojiDone = new File(LocatieDone);
-		File emojiBonus = new File(LocatieBonus);
-		//BufferedReader br_bepaling = new BufferedReader(new FileReader(bepaling));
-		BufferedReader br_emoji_promise = new BufferedReader(new FileReader(emojiPromise));
-		BufferedReader br_emoji_done = new BufferedReader(new FileReader(emojiDone));
-		BufferedReader br_emoji_bonus = new BufferedReader(new FileReader(emojiBonus));
-		
-		Process process = new Process(br_emoji_promise, br_emoji_done, br_emoji_bonus, br_week_list);
+		// Run the full process to generate results
+		try {
+			Process process = new Process(getBufReader(LocatiePromise), getBufReader(LocatieDone), getBufReader(LocatieBonus), br_week_list);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
 		
 	}	
 }
