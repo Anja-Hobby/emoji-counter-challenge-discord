@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Pattern;
 
+import javax.swing.JTextArea;
+
 public class Process {
 
 	ArrayList<Emoji> emojis = new ArrayList<>();
@@ -22,7 +24,7 @@ public class Process {
 	
 	
 
-	public Process(BufferedReader brEmojiPromise, BufferedReader brEmojiDone, BufferedReader br_emoji_bonus, ArrayList<BufferedReader> br_Week) throws IOException {
+	public Process(BufferedReader brEmojiPromise, BufferedReader brEmojiDone, BufferedReader br_emoji_bonus, ArrayList<BufferedReader> br_Week, JTextArea outputArea) throws IOException {
 		maakEmojis(brEmojiDone, EmojiType.DONE);
 		maakEmojis(brEmojiPromise, EmojiType.PROMISE);
 		maakEmojis(br_emoji_bonus, EmojiType.BONUS);
