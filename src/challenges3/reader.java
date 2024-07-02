@@ -29,14 +29,12 @@ public class reader {
 	public static void main(String[] args) throws Exception {
 		// get file locations, and files
 		int week = 0 ;
-		ArrayList<String> locations = new ArrayList<>();
 		ArrayList<BufferedReader> br_week_list = new ArrayList<>();
 		
 		// Retrieve all data from the chatW<week>.txt's
 		// Start with week 0: here people can input their promises for the first week.
 		while (week <= amount_of_weeks) {
 			String file_name = folderLocation+"chatW"+week+".txt";
-			locations.add(file_name);
 			File file = new File(file_name);
 			if (file.exists() && file.isFile()) {
 				br_week_list.add(new BufferedReader(new FileReader(file)));
@@ -46,7 +44,7 @@ public class reader {
 		
 		// Run the full process to generate results
 		try {
-			Process process = new Process(getBufReader(LocatiePromise), getBufReader(LocatieDone), getBufReader(LocatieBonus), br_week_list);
+			new Process(getBufReader(LocatiePromise), getBufReader(LocatieDone), getBufReader(LocatieBonus), br_week_list);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
