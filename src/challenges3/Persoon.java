@@ -76,17 +76,43 @@ public class Persoon implements Comparable<Persoon>{
 		return (int) Variance.getSom(scores);
 	}
 	
-	public char[] getPoms() {
+	public String getPoms(int num) {
 
 		if (naam.equals("")) { return null; }
 		if (doelen.size() >0) {
-			System.out.println("#. " + getPromiseGehaald() + naam + "               (" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + doelen.get(doelen.size()-1)+":1pomodorog:");
+			System.out.println("#. " + getPromiseGehaald() + naam + get_spaces(naam, getPromiseGehaald()) + "(" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + doelen.get(doelen.size()-1)+":1pomodorog:");
+			return "\n" + num + ". " + getPromiseGehaald() + checkForChars(naam) + get_spaces(naam, "")+"(" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + doelen.get(doelen.size()-1)+":1pomodorog:";
 		} else {
 			System.out.println("#. " + naam + "              (" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + 0 +":1pomodorog:");
+			return "\n" + num +". " +  checkForChars(naam) + "              (" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + 0 +":1pomodorog:";
 		}
-		return null;
-		
 	}
+	private String checkForChars(String naam2) {
+	    // Define special characters that need to be escaped
+	    String specialChars = "_*";
+	    
+	    // Use a regular expression to replace each special character with an escaped version
+	    for (char c : specialChars.toCharArray()) {
+	        naam2 = naam2.replace(Character.toString(c), "\\" + c);
+	    }
+	    
+	    return naam2;
+	}
+
+	private String get_spaces(String naam2, String string) {
+		String spaces = "";
+		int length = 30-naam2.length();
+		if (string.length()>0) {
+			length = length-3;
+		}
+		while (length > 0) {
+			spaces = spaces + " ";
+			length--;
+		}
+		
+		return spaces;
+	}
+
 	private String getPromiseGehaald() {
 		//System.out.println(naam + "   doelen  " + doelen);
 		//System.out.println(naam + "   scores   " + scores);
