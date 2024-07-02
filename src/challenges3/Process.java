@@ -27,8 +27,9 @@ public class Process {
 		maakEmojis(brEmojiPromise, EmojiType.PROMISE);
 		maakEmojis(br_emoji_bonus, EmojiType.BONUS);
 		//maakPersonen(br_bepaling);
-		verwerk(br_Week);
+		String results = verwerk(br_Week);
 		//printInstellingen();
+		outputArea.setText(results);
 
 	}
 
@@ -88,8 +89,11 @@ public class Process {
 	}
 
 	
-	public void verwerk(ArrayList<BufferedReader> br) throws IOException {
+	public String verwerk(ArrayList<BufferedReader> br) throws IOException {
+		String result = "";
+		int weeknumber = 0;
 		for (BufferedReader br_week:br) {
+			result = "";
 			while ((ss=br_week.readLine()) != null) {
 				read(ss + ",");
 			}
@@ -100,10 +104,15 @@ public class Process {
 			}
 			Collections.sort(personen);
 			System.out.println(" score-bord: ");
+			result = result + "score-bord week " + weeknumber;
+			int num = 1;
 			for (Persoon p : personen) {
-				p.getPoms();
+				result = result + p.getPoms(num);
+				num++;
 			}
+			weeknumber++;
 		}
+		return result;
 	}
 
 
