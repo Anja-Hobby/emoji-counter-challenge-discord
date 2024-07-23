@@ -12,7 +12,7 @@ public class reader {
 	static int amount_of_weeks = 12;
 	
 	// Change this string to the folderLocation all the txt files are in.
-	static String folderLocation = "C:\\Users\\anjac\\OneDrive\\Desktop\\challenges\\2024q4\\";
+	static String folderLocation = "C:\\Users\\anjac\\OneDrive\\Desktop\\challenges\\2024q5\\";
 
 	//static String LocatieBepaling = folderLocation+"Bepaling.txt"; // txt file met hoeveel pannekoeken iedereen doet en vanaf welke week ze mee doen
 
