@@ -95,14 +95,14 @@ public class Persoon implements Comparable<Persoon>{
 			}
 			// nieuwe format: <bonusemoji> <puntentotaal> <Naam>         (<basispunten hiervoor>+basispunten deze week>)=totaal basispunten <emoji>  & (0 + 17)=17 bonuspunten   inzet: 20 :1pomodorog:
 			System.out.println("#. " + getPromiseGehaald() + naam + get_spaces(naam, getPromiseGehaald()) + "(" + (getScoresOpgeteld()) +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + doelen.get(doelen.size()-1)+":1pomodorog:");
-			return "\n" + num + ". " + getPromiseGehaald() + " " + puntentotaal + " " + naam + get_spaces(naam, getPromiseGehaald()) + "(" + basisvoorheen + "+" + basistotaal + ")=" + basistotaal + basisemoji +" & ("+ bonusvoorheen + "+" + bonusdezeweek +")=" + bonustotaal+ bonusemoji + " inzet:" + inzet ; 
+			return "\n" + num + ". " + getPromiseGehaald() + " " + puntentotaal + " " + naam + get_spaces(naam, getPromiseGehaald()) + "(" + basisvoorheen + "+" + basisdezeweek + ")=" + basistotaal + basisemoji +" & ("+ bonusvoorheen + "+" + bonusdezeweek +")=" + bonustotaal+ bonusemoji + " inzet:" + inzet ; 
 			//return "\n" + num + ". " + getPromiseGehaald() + checkForChars(naam) + get_spaces(naam, "")+"(" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + doelen.get(doelen.size()-1)+":1pomodorog:";
 		} else {
 			if (puntentotaal == 0) {
 				return "";
 			}
 			System.out.println("#. " + naam + "              (" + getScoresOpgeteld() +"+"+ getBonussenOpgeteld() +"=)"+getTotaleScore()+":sunny:" + " inzet volgende week: " + 0 +":1pomodorog:");
-			return "\n" + num + ". " + " " + puntentotaal + " " + naam + get_spaces(naam, getPromiseGehaald()) + "(" + basisvoorheen + "+" + basistotaal + ")=" + basistotaal + basisemoji +" & ("+ bonusvoorheen + "+" + bonusdezeweek +")=" + bonustotaal+ bonusemoji + " inzet:" + inzet ; 
+			return "\n" + num + ". " + " " + puntentotaal + " " + naam + get_spaces(naam, getPromiseGehaald()) + "(" + basisvoorheen + "+" + basisdezeweek + ")=" + basistotaal + basisemoji +" & ("+ bonusvoorheen + "+" + bonusdezeweek +")=" + bonustotaal+ bonusemoji + " inzet:" + inzet ; 
 			
 		}
 	}
