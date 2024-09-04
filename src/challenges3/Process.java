@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.regex.Pattern;
+import javax.swing.JTextArea;
 
 public class Process {
 
@@ -22,7 +23,8 @@ public class Process {
 	
 	
 
-	public Process(BufferedReader brEmojiPromise, BufferedReader brEmojiDone, BufferedReader br_emoji_bonus, ArrayList<BufferedReader> br_Week) throws IOException {
+	// voor gebruik met de GUI
+	public Process(BufferedReader brEmojiPromise, BufferedReader brEmojiDone, BufferedReader br_emoji_bonus, ArrayList<BufferedReader> br_Week, JTextArea outputArea) throws IOException {
 		maakEmojis(brEmojiDone, EmojiType.DONE);
 		maakEmojis(brEmojiPromise, EmojiType.PROMISE);
 		maakEmojis(br_emoji_bonus, EmojiType.BONUS);
@@ -32,6 +34,17 @@ public class Process {
 		outputArea.setText(results);
 
 	}
+	
+	// voor gebruik met de reader
+	public Process(BufferedReader brEmojiPromise, BufferedReader brEmojiDone, BufferedReader br_emoji_bonus, ArrayList<BufferedReader> br_Week) throws IOException {
+		maakEmojis(brEmojiDone, EmojiType.DONE);
+		maakEmojis(brEmojiPromise, EmojiType.PROMISE);
+		maakEmojis(br_emoji_bonus, EmojiType.BONUS);
+		//maakPersonen(br_bepaling);
+		String results = verwerk(br_Week);
+		//printInstellingen();
+	}
+
 
 
 	private void printInstellingen() {
