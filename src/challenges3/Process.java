@@ -31,7 +31,7 @@ public class Process {
 		//maakPersonen(br_bepaling);
 		String results = verwerk(br_Week);
 		//printInstellingen();
-		outputArea.setText(results);
+		System.out.println(results);
 
 	}
 	
